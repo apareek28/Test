@@ -2,51 +2,47 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-
-const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/contact', label: 'Contact' }
-];
+import { navLinks } from '@/lib/site-data';
 
 export function Navbar() {
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 18);
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <motion.header
-      initial={{ y: -20, opacity: 0 }}
+      initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 border-b border-white/10 bg-bg/85 backdrop-blur"
+      className={`sticky top-0 z-50 border-b transition-all ${
+        scrolled ? 'border-line bg-bg/95 backdrop-blur-xl' : 'border-transparent bg-transparent'
+      }`}
     >
-      <nav className="container-wrap flex h-16 items-center justify-between">
-        <Link href="/" className="font-semibold tracking-wide text-white">
-          Lumen<span className="text-accent">Tech</span>
+      <nav className="container-wrap flex h-20 items-center justify-between gap-6">
+        <Link href="/" className="font-semibold tracking-tight text-white">
+          Aether<span className="text-accent">Automate</span>
         </Link>
-        <ul className="hidden items-center gap-6 md:flex">
-          {links.map((link) => {
-            const active = pathname === link.href;
+        <ul className="hidden items-center gap-6 lg:flex">
+          {navLinks.map((link) => {
+            const active = pathname.startsWith(link.href.replace('/ai-agents', '')) && link.href !== '/';
             return (
               <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`text-sm transition-colors ${
-                    active ? 'text-accent' : 'text-slate-200 hover:text-accent'
-                  }`}
-                >
+                <Link href={link.href} className={`text-sm ${active ? 'text-white' : 'text-slate-300 hover:text-white'}`}>
                   {link.label}
                 </Link>
               </li>
             );
           })}
         </ul>
-        <Link
-          href="/contact"
-          className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-black transition-all hover:shadow-glow"
-        >
-          Book Demo
+        <Link href="/book-call" className="rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-white shadow-glow">
+          Book Discovery Call
         </Link>
       </nav>
     </motion.header>
