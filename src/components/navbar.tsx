@@ -2,53 +2,34 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
-
-const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/contact', label: 'Contact' }
-];
+import { navLinks, brand } from '@/content/site';
 
 export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 border-b border-white/10 bg-bg/85 backdrop-blur"
-    >
-      <nav className="container-wrap flex h-16 items-center justify-between">
-        <Link href="/" className="font-semibold tracking-wide text-white">
-          Lumen<span className="text-accent">Tech</span>
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-white/90 backdrop-blur">
+      <nav className="container-wrap flex h-18 items-center justify-between py-4">
+        <Link href="/" className="text-lg font-semibold tracking-tight">
+          {brand.name.split(' ')[0]}
+          <span className="text-primary"> {brand.name.split(' ')[1]} {brand.name.split(' ')[2]}</span>
         </Link>
-        <ul className="hidden items-center gap-6 md:flex">
-          {links.map((link) => {
-            const active = pathname === link.href;
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`text-sm transition-colors ${
-                    active ? 'text-accent' : 'text-slate-200 hover:text-accent'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
+        <ul className="hidden items-center gap-6 lg:flex">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={link.href}
+                className={`text-sm ${pathname.startsWith(link.href) ? 'text-primary' : 'text-slate-600 hover:text-ink'}`}
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
-        <Link
-          href="/contact"
-          className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-black transition-all hover:shadow-glow"
-        >
-          Book Demo
+        <Link href="/book-strategy-call" className="btn-primary">
+          Book Free Strategy Call
         </Link>
       </nav>
-    </motion.header>
+    </header>
   );
 }

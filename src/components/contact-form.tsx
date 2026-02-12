@@ -2,100 +2,45 @@
 
 import { FormEvent, useState } from 'react';
 
-type FormState = {
-  name: string;
-  email: string;
-  message: string;
-};
-
 export function ContactForm() {
-  const [form, setForm] = useState<FormState>({ name: '', email: '', message: '' });
-  const [error, setError] = useState('');
-  const [success, setSuccess] = useState('');
-
-  function validate(values: FormState) {
-    if (!values.name.trim() || !values.email.trim() || !values.message.trim()) {
-      return 'Please complete all fields.';
-    }
-
-    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    if (!emailRegex.test(values.email)) {
-      return 'Please use a valid email address.';
-    }
-
-    return '';
-  }
+  const [step, setStep] = useState(1);
+  const [form, setForm] = useState({ name: '', email: '', company: '', goals: '', budget: '' });
+  const [message, setMessage] = useState('');
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setError('');
-    setSuccess('');
-
-    const validationError = validate(form);
-    if (validationError) {
-      setError(validationError);
-      return;
-    }
-
-    // Placeholder for future email API integration.
-    setTimeout(() => {
-      setSuccess('Message sent successfully. Our team will contact you soon.');
-      setForm({ name: '', email: '', message: '' });
-    }, 200);
+    setMessage('Thanks — your request is queued. A strategist will respond within one business day.');
+    setForm({ name: '', email: '', company: '', goals: '', budget: '' });
+    setStep(1);
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-6">
-      <div>
-        <label htmlFor="name" className="mb-2 block text-sm font-medium text-slate-200">
-          Name
-        </label>
-        <input
-          id="name"
-          value={form.name}
-          onChange={(e) => setForm((current) => ({ ...current, name: e.target.value }))}
-          className="w-full rounded-lg border border-white/20 bg-black/20 px-4 py-3 text-white outline-none transition focus:border-accent"
-          placeholder="Your name"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-200">
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          value={form.email}
-          onChange={(e) => setForm((current) => ({ ...current, email: e.target.value }))}
-          className="w-full rounded-lg border border-white/20 bg-black/20 px-4 py-3 text-white outline-none transition focus:border-accent"
-          placeholder="you@company.com"
-        />
-      </div>
-
-      <div>
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-slate-200">
-          Message
-        </label>
-        <textarea
-          id="message"
-          value={form.message}
-          onChange={(e) => setForm((current) => ({ ...current, message: e.target.value }))}
-          className="min-h-36 w-full rounded-lg border border-white/20 bg-black/20 px-4 py-3 text-white outline-none transition focus:border-accent"
-          placeholder="What goals are you targeting this quarter?"
-        />
-      </div>
-
-      {error && <p className="text-sm text-red-400">{error}</p>}
-      {success && <p className="text-sm text-accent">{success}</p>}
-
-      <button
-        type="submit"
-        className="w-full rounded-full bg-accent px-6 py-3 font-semibold text-black transition hover:shadow-glow"
-      >
-        Send Message
-      </button>
-      <p className="text-xs text-slate-400">This form is ready to connect with your email API endpoint.</p>
+    <form onSubmit={onSubmit} className="card space-y-4">
+      <p className="text-xs font-semibold text-primary">Multi-step Inquiry Form • Step {step}/2</p>
+      {step === 1 ? (
+        <>
+          <input className="w-full rounded-xl border border-border px-4 py-3" placeholder="Full Name" value={form.name} onChange={(e) => setForm((s) => ({ ...s, name: e.target.value }))} required />
+          <input className="w-full rounded-xl border border-border px-4 py-3" type="email" placeholder="Work Email" value={form.email} onChange={(e) => setForm((s) => ({ ...s, email: e.target.value }))} required />
+          <input className="w-full rounded-xl border border-border px-4 py-3" placeholder="Company" value={form.company} onChange={(e) => setForm((s) => ({ ...s, company: e.target.value }))} required />
+          <button type="button" className="btn-primary" onClick={() => setStep(2)}>Continue</button>
+        </>
+      ) : (
+        <>
+          <textarea className="min-h-32 w-full rounded-xl border border-border px-4 py-3" placeholder="Primary revenue goals" value={form.goals} onChange={(e) => setForm((s) => ({ ...s, goals: e.target.value }))} required />
+          <select className="w-full rounded-xl border border-border px-4 py-3" value={form.budget} onChange={(e) => setForm((s) => ({ ...s, budget: e.target.value }))} required>
+            <option value="">Budget Range</option>
+            <option value="50k-100k">$50K–$100K</option>
+            <option value="100k-250k">$100K–$250K</option>
+            <option value="250k+">$250K+</option>
+          </select>
+          <p className="text-xs text-slate-500">reCAPTCHA v3 placeholder: connect provider key in production.</p>
+          <div className="flex gap-3">
+            <button type="button" onClick={() => setStep(1)} className="btn-secondary">Back</button>
+            <button type="submit" className="btn-primary">Request Strategy Session</button>
+          </div>
+        </>
+      )}
+      {message && <p className="text-sm text-primary">{message}</p>}
     </form>
   );
 }

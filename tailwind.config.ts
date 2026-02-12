@@ -5,14 +5,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#333333',
-        accent: '#F5C542'
+        ink: '#0A142F',
+        navy: '#0F1E4D',
+        primary: '#1C3FAA',
+        accent: '#6C7CFF',
+        mist: '#F4F7FC',
+        border: '#DCE4F3'
       },
       boxShadow: {
-        glow: '0 0 0 1px rgba(245, 197, 66, 0.3), 0 0 24px rgba(245, 197, 66, 0.35)'
+        soft: '0 12px 40px rgba(15, 30, 77, 0.08)',
+        hover: '0 16px 48px rgba(15, 30, 77, 0.14)'
       },
       backgroundImage: {
-        grid: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)'
+        'hero-gradient': 'radial-gradient(circle at 15% 15%, rgba(108,124,255,.28), transparent 36%), radial-gradient(circle at 85% 5%, rgba(28,63,170,.2), transparent 34%)'
       }
     }
   },
