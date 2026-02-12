@@ -2,53 +2,47 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion } from 'framer-motion';
-
-const links = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
-  { href: '/contact', label: 'Contact' }
-];
+import { useState } from 'react';
+import { navLinks, brand } from '@/content/site';
 
 export function Navbar() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   return (
-    <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 border-b border-white/10 bg-bg/85 backdrop-blur"
-    >
-      <nav className="container-wrap flex h-16 items-center justify-between">
-        <Link href="/" className="font-semibold tracking-wide text-white">
-          Lumen<span className="text-accent">Tech</span>
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-white/90 backdrop-blur">
+      <nav className="container-wrap flex items-center justify-between py-4">
+        <Link href="/" className="text-lg font-semibold tracking-tight">
+          {brand.name}
         </Link>
-        <ul className="hidden items-center gap-6 md:flex">
-          {links.map((link) => {
-            const active = pathname === link.href;
-            return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={`text-sm transition-colors ${
-                    active ? 'text-accent' : 'text-slate-200 hover:text-accent'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            );
-          })}
+        <button className="rounded-md border border-border px-3 py-2 text-sm lg:hidden" onClick={() => setOpen((v) => !v)}>
+          Menu
+        </button>
+        <ul className="hidden items-center gap-6 lg:flex">
+          {navLinks.map((link) => (
+            <li key={link.href}>
+              <Link href={link.href} className={`text-sm ${pathname.startsWith(link.href) ? 'text-primary' : 'text-slate-600 hover:text-ink'}`}>
+                {link.label}
+              </Link>
+            </li>
+          ))}
         </ul>
-        <Link
-          href="/contact"
-          className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-black transition-all hover:shadow-glow"
-        >
-          Book Demo
+        <Link href="/book-strategy-call" className="hidden btn-primary lg:inline-flex">
+          Book Free Strategy Call
         </Link>
       </nav>
-    </motion.header>
+      {open ? (
+        <div className="container-wrap space-y-2 border-t border-border py-3 lg:hidden">
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="block text-sm text-slate-700" onClick={() => setOpen(false)}>
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/book-strategy-call" className="btn-primary w-full" onClick={() => setOpen(false)}>
+            Book Free Strategy Call
+          </Link>
+        </div>
+      ) : null}
+    </header>
   );
 }
