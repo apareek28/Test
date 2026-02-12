@@ -2,28 +2,24 @@ import type { Metadata } from 'next';
 import { AnimatedSection } from '@/components/animated-section';
 
 export const metadata: Metadata = {
-  title: 'About | LumenTech',
-  description: 'Learn how LumenTech blends product engineering, AI, and CRO to help teams scale with confidence.'
+  title: 'Why Us | Axiom Automation',
+  description: 'Meet Axiom Automation’s enterprise delivery model, governance standards, and ROI approach.'
 };
 
 export default function AboutPage() {
   return (
     <div className="container-wrap section-padding">
       <AnimatedSection className="max-w-3xl">
-        <p className="text-sm uppercase tracking-[0.2em] text-accent">About LumenTech</p>
-        <h1 className="mt-4 text-4xl font-semibold">Your growth-focused tech partner.</h1>
-        <p className="mt-6 text-muted">
-          We are a team of senior engineers, strategists, and conversion specialists helping companies close the gap between product excellence and revenue growth.
-        </p>
+        <p className="text-sm uppercase tracking-[0.2em] text-accent">Why Axiom</p>
+        <h1 className="mt-4 text-4xl font-semibold">Strategic automation experts built for complex organizations.</h1>
       </AnimatedSection>
-
-      <div className="mt-12 grid gap-6 md:grid-cols-3">
+      <div className="mt-10 grid gap-5 md:grid-cols-3">
         {[
-          { title: 'Mission', body: 'Ship elegant technology that drives measurable business outcomes.' },
-          { title: 'Approach', body: 'Lean teams, rapid experimentation, and transparent collaboration.' },
-          { title: 'Values', body: 'Craft, accountability, speed, and long-term client impact.' }
+          { title: 'Security-First Delivery', body: 'Every implementation follows enterprise controls with auditable workflows.' },
+          { title: 'Senior Architects', body: 'Dedicated specialists lead roadmap design, implementation, and optimization.' },
+          { title: 'Measured ROI', body: 'We align every program to clear KPIs, executive dashboards, and business outcomes.' }
         ].map((item, idx) => (
-          <AnimatedSection key={item.title} delay={idx * 0.07} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <AnimatedSection key={item.title} delay={idx * 0.07} className="glass-card rounded-2xl p-6">
             <h2 className="text-xl font-semibold">{item.title}</h2>
             <p className="mt-3 text-sm text-muted">{item.body}</p>
           </AnimatedSection>
