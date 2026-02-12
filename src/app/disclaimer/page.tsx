@@ -2,17 +2,17 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Disclaimer',
-  description: 'Disclaimer for ApexRevenue AI website users and prospects.'
+  description: 'Important legal disclaimer regarding information published by ApexRevenue AI.'
 };
 
-export default function Page() {
+export default function DisclaimerPage() {
   return (
     <div className="container-wrap section-padding max-w-4xl">
-      <h1 className="headline-lg capitalize">disclaimer</h1>
+      <h1 className="headline-lg">Disclaimer</h1>
       <div className="mt-6 space-y-4 text-slate-600">
-        <p>This policy explains what data we collect, why we process it, and how users can exercise rights under applicable regulations.</p>
-        <p>We disclose third-party processors, retention schedules, lawful basis, and contact channels for privacy requests.</p>
-        <p>For enterprise clients, a DPA, SCCs, and security controls documentation are available on request.</p>
+        <p>Website content is for informational purposes only and does not constitute legal, tax, accounting, or investment advice.</p>
+        <p>Case study results are client-specific and do not guarantee identical outcomes for other organizations.</p>
+        <p>We are not liable for third-party website content linked from this domain.</p>
       </div>
     </div>
   );

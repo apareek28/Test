@@ -1,18 +1,18 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Gdpr compliance',
-  description: 'Gdpr compliance for ApexRevenue AI website users and prospects.'
+  title: 'GDPR Compliance',
+  description: 'How ApexRevenue AI supports GDPR rights and data governance obligations.'
 };
 
-export default function Page() {
+export default function GDPRPage() {
   return (
     <div className="container-wrap section-padding max-w-4xl">
-      <h1 className="headline-lg capitalize">gdpr compliance</h1>
+      <h1 className="headline-lg">GDPR Compliance</h1>
       <div className="mt-6 space-y-4 text-slate-600">
-        <p>This policy explains what data we collect, why we process it, and how users can exercise rights under applicable regulations.</p>
-        <p>We disclose third-party processors, retention schedules, lawful basis, and contact channels for privacy requests.</p>
-        <p>For enterprise clients, a DPA, SCCs, and security controls documentation are available on request.</p>
+        <p>EU/EEA users can exercise rights to access, rectify, erase, restrict, object, and request portability of personal data.</p>
+        <p>Where required, we rely on SCCs and appropriate safeguards for cross-border transfers. Processing records and incident response controls are maintained under internal security policies.</p>
+        <p>To submit a request, email privacy@apexrevenue.ai. We respond within statutory timelines.</p>
       </div>
     </div>
   );
