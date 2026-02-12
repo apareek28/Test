@@ -1,169 +1,130 @@
 import Link from 'next/link';
 import { AnimatedSection } from '@/components/animated-section';
+import { WorkflowVisual } from '@/components/workflow-visual';
+import { RoiCalculator } from '@/components/roi-calculator';
+import { ContactForm } from '@/components/contact-form';
 
-const features = [
-  'Revenue-focused product strategy and execution',
-  'AI-powered automation to reduce operational drag',
-  'Scalable cloud architecture for growth stages',
-  'Conversion-first design system and UX optimization'
+const services = [
+  'AI Automation',
+  'Workflow Automation',
+  'CRM & ERP Integration',
+  'RPA Implementation',
+  'Custom AI Agents',
+  'Process Optimization Consulting'
 ];
 
-const steps = [
-  {
-    title: 'Audit & Opportunity Mapping',
-    body: 'We identify growth blockers and prioritize high-impact wins across product, marketing, and operations.'
-  },
-  {
-    title: 'Rapid Build Sprints',
-    body: 'Cross-functional squads design, prototype, and launch production-ready initiatives quickly.'
-  },
-  {
-    title: 'Optimization & Scale',
-    body: 'We continuously test, measure, and improve key metrics like activation, retention, and demo conversion.'
-  }
-];
-
-const faqs = [
-  {
-    q: 'How quickly can we launch?',
-    a: 'Most clients launch their first high-impact initiative in 14 to 21 days.'
-  },
-  {
-    q: 'Do you work with in-house teams?',
-    a: 'Yes. We embed with your internal team and transfer knowledge as we build.'
-  },
-  {
-    q: 'Can you integrate with our existing tools?',
-    a: 'Absolutely. We specialize in clean integrations across CRMs, analytics, and product stacks.'
-  }
-];
+const process = ['Audit & Discovery', 'Automation Architecture', 'Implementation', 'Optimization & Scaling'];
 
 export default function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(245,197,66,0.2),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(245,197,66,0.12),transparent_28%)]" />
-        <div className="absolute inset-0 bg-grid bg-[size:38px_38px] opacity-10" />
-        <div className="container-wrap relative section-padding">
-          <AnimatedSection className="max-w-3xl space-y-7">
-            <p className="inline-flex rounded-full border border-accent/40 bg-accent/10 px-4 py-1 text-sm text-accent">
-              Trusted by high-growth B2B teams
-            </p>
-            <h1 className="text-4xl font-semibold leading-tight text-white md:text-6xl">
-              Build Faster. Convert Better. Scale Smarter.
-            </h1>
-            <p className="text-lg text-muted">
-              LumenTech helps ambitious companies turn product friction into predictable pipeline with modern engineering and CRO-driven UX.
-            </p>
+        <div className="absolute inset-0 bg-grid bg-[size:42px_42px] opacity-20" />
+        <div className="container-wrap relative section-padding grid items-center gap-12 lg:grid-cols-2">
+          <AnimatedSection className="space-y-6">
+            <p className="inline-flex rounded-full border border-accent/40 bg-accent/10 px-4 py-1 text-sm text-accent">Enterprise Automation Agency</p>
+            <h1 className="text-4xl font-semibold leading-tight text-white md:text-6xl">Automate Operations. Eliminate Bottlenecks. Scale Without Limits.</h1>
+            <p className="max-w-xl text-lg text-muted">We build secure AI agents, RPA systems, and workflow architecture that help enterprise teams execute faster with measurable operational gains.</p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="rounded-full bg-accent px-6 py-3 font-semibold text-black transition-all hover:shadow-glow"
-              >
-                Book a Demo
-              </Link>
-              <Link
-                href="/services"
-                className="rounded-full border border-white/20 px-6 py-3 font-semibold text-white transition hover:border-accent hover:text-accent"
-              >
-                Explore Services
-              </Link>
+              <Link href="/contact" className="rounded-full bg-accent px-6 py-3 font-semibold text-[#031220] transition-all hover:shadow-glow">Book a Strategy Call</Link>
+              <Link href="#case-studies" className="rounded-full border border-white/20 px-6 py-3 font-semibold text-white transition hover:border-accent hover:text-accent">See Case Studies</Link>
             </div>
+          </AnimatedSection>
+          <AnimatedSection delay={0.08}>
+            <WorkflowVisual />
           </AnimatedSection>
         </div>
       </section>
 
-      <AnimatedSection className="section-padding container-wrap grid gap-8 md:grid-cols-2">
-        <div>
-          <h2 className="text-3xl font-semibold">The Problem</h2>
-          <p className="mt-4 text-muted">
-            Most teams struggle with fragmented tooling, slow release cycles, and low conversion rates. Growth stalls when product and revenue teams are disconnected.
-          </p>
-        </div>
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p className="text-lg text-white">
-            73% of SaaS companies lose qualified leads due to weak onboarding flows and disconnected systems.
-          </p>
+      <AnimatedSection className="container-wrap section-padding">
+        <div className="grid gap-6 rounded-2xl border border-white/10 bg-black/20 p-6 md:grid-cols-3">
+          <div>
+            <p className="text-sm text-slate-400">Trusted by enterprise operators</p>
+            <p className="mt-2 text-2xl font-semibold">Fortis • Helix • Northstar • Synapse</p>
+          </div>
+          <div className="rounded-xl border border-white/10 p-4 text-sm text-slate-300">Compliance badges: SOC 2 Type II • ISO 27001 • GDPR Ready</div>
+          <div className="rounded-xl border border-white/10 p-4 text-sm text-slate-300">“Axiom reduced operating cycle times by 65% in 12 weeks.” — COO, Global Logistics Client</div>
         </div>
       </AnimatedSection>
 
-      <AnimatedSection className="section-padding border-y border-white/10 bg-black/10">
-        <div className="container-wrap grid gap-8 md:grid-cols-2">
-          <div>
-            <h2 className="text-3xl font-semibold">Our Solution</h2>
-            <p className="mt-4 text-muted">
-              We unify strategy, product engineering, and CRO into one execution system that increases conversion and speeds delivery.
-            </p>
-          </div>
-          <div className="grid gap-4">
-            {features.map((feature) => (
-              <div key={feature} className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-slate-100">
-                <span className="mr-2 text-accent">◆</span>
-                {feature}
-              </div>
+      <section className="section-padding border-y border-white/10 bg-black/20">
+        <div className="container-wrap">
+          <h2 className="text-3xl font-semibold">Core Services</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <AnimatedSection key={service} className="glass-card rounded-2xl p-5 transition-all hover:-translate-y-1 hover:border-accent/40">
+                <div className="mb-3 h-8 w-8 rounded-lg border border-accent/40 bg-accent/10" />
+                <h3 className="text-xl font-semibold">{service}</h3>
+                <p className="mt-2 text-sm text-slate-300">Designed for secure enterprise execution with full observability and governance.</p>
+                <span className="mt-3 inline-block text-sm text-accent">Learn More →</span>
+              </AnimatedSection>
             ))}
           </div>
         </div>
-      </AnimatedSection>
+      </section>
 
-      <section className="section-padding container-wrap">
-        <h2 className="text-center text-3xl font-semibold">How It Works</h2>
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {steps.map((step, idx) => (
-            <AnimatedSection
-              key={step.title}
-              delay={idx * 0.08}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-transform hover:-translate-y-1"
-            >
-              <p className="mb-3 text-sm text-accent">Step 0{idx + 1}</p>
-              <h3 className="text-xl font-semibold">{step.title}</h3>
-              <p className="mt-3 text-sm text-muted">{step.body}</p>
+      <section className="container-wrap section-padding">
+        <h2 className="text-3xl font-semibold">How It Works</h2>
+        <div className="mt-8 grid gap-4 md:grid-cols-4">
+          {process.map((step, idx) => (
+            <AnimatedSection key={step} delay={idx * 0.06} className="glass-card rounded-2xl p-5">
+              <p className="text-xs uppercase tracking-[0.2em] text-accent">Step {idx + 1}</p>
+              <h3 className="mt-3 text-lg font-semibold">{step}</h3>
             </AnimatedSection>
           ))}
         </div>
       </section>
 
-      <section className="section-padding border-y border-white/10 bg-black/10">
+      <section id="case-studies" className="section-padding border-y border-white/10 bg-black/20">
+        <div className="container-wrap grid gap-6 lg:grid-cols-2">
+          <AnimatedSection className="glass-card rounded-2xl p-6">
+            <h3 className="text-2xl font-semibold">Global BPO Transformation</h3>
+            <p className="mt-3 text-sm text-muted">Before: manual ticket routing and fragmented approvals. After: autonomous routing, SLA alerts, and unified workflow governance.</p>
+            <div className="mt-5 grid grid-cols-3 gap-3 text-center">
+              <div className="rounded-lg border border-white/10 p-3"><p className="text-2xl font-semibold text-accent">42%</p><p className="text-xs text-slate-400">Cost Reduction</p></div>
+              <div className="rounded-lg border border-white/10 p-3"><p className="text-2xl font-semibold text-accent">65%</p><p className="text-xs text-slate-400">Faster Workflows</p></div>
+              <div className="rounded-lg border border-white/10 p-3"><p className="text-2xl font-semibold text-accent">99.95%</p><p className="text-xs text-slate-400">Reliability</p></div>
+            </div>
+            <Link href="/contact" className="mt-5 inline-block text-sm font-medium text-accent">View Full Case Study →</Link>
+          </AnimatedSection>
+          <AnimatedSection delay={0.08}>
+            <RoiCalculator />
+          </AnimatedSection>
+        </div>
+      </section>
+
+      <section className="container-wrap section-padding">
+        <h2 className="text-3xl font-semibold">Technology Stack</h2>
+        <div className="mt-7 grid grid-cols-2 gap-3 text-sm text-slate-400 md:grid-cols-4">
+          {['OpenAI', 'Zapier', 'UiPath', 'Make', 'HubSpot', 'Salesforce', 'AWS', 'Azure'].map((tech) => (
+            <div key={tech} className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-center transition hover:border-accent/50 hover:text-slate-200">{tech}</div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-padding border-y border-white/10 bg-black/20">
         <div className="container-wrap">
-          <h2 className="text-center text-3xl font-semibold">Client Outcomes</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {[
-              '"Demo conversions increased 41% in two months." — RevOps Lead, AtlasCloud',
-              '"We replaced manual workflows and saved 18+ hours weekly." — COO, NovaHealth',
-              '"Launch velocity doubled without increasing team size." — VP Product, StackForge'
-            ].map((quote) => (
-              <div key={quote} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-slate-200">
-                {quote}
-              </div>
+          <h2 className="text-3xl font-semibold">Why Choose Us</h2>
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {['Enterprise Security', 'Dedicated Automation Architects', 'ROI-Focused Delivery', 'Scalable Infrastructure', 'Ongoing Support', 'Executive Reporting'].map((item) => (
+              <div key={item} className="glass-card rounded-2xl p-5 text-sm text-slate-200">{item}</div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-padding container-wrap">
-        <h2 className="text-3xl font-semibold">FAQ</h2>
-        <div className="mt-8 space-y-4">
-          {faqs.map((item) => (
-            <div key={item.q} className="rounded-xl border border-white/10 bg-white/5 p-5">
-              <p className="font-medium text-white">{item.q}</p>
-              <p className="mt-2 text-sm text-muted">{item.a}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="section-padding border-t border-white/10">
-        <div className="container-wrap rounded-3xl border border-accent/40 bg-accent/10 p-10 text-center">
-          <h2 className="text-3xl font-semibold text-white">Ready to turn your website into a growth engine?</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-muted">
-            Get a tailored roadmap to increase qualified demos, improve user experience, and modernize your tech stack.
-          </p>
-          <Link
-            href="/contact"
-            className="mt-6 inline-block rounded-full bg-accent px-6 py-3 font-semibold text-black transition-all hover:shadow-glow"
-          >
-            Schedule Your Demo
-          </Link>
+      <section className="container-wrap section-padding">
+        <div className="grid gap-8 rounded-3xl border border-accent/40 bg-gradient-to-r from-panel to-[#0a2033] p-8 lg:grid-cols-2">
+          <div>
+            <h2 className="text-4xl font-semibold">Ready to Transform Your Operations?</h2>
+            <p className="mt-3 text-muted">Book a strategic automation audit with our enterprise architects and receive a roadmap tailored to your data, systems, and governance requirements.</p>
+            <ul className="mt-6 space-y-2 text-sm text-slate-300">
+              <li>• Security and compliance framework included</li>
+              <li>• Trust signals and testimonials attached to every step</li>
+              <li>• Executive-ready business case in under 10 days</li>
+            </ul>
+          </div>
+          <ContactForm />
         </div>
       </section>
     </>

@@ -13,10 +13,11 @@ html {
 body {
   @apply bg-bg text-slate-100 antialiased;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-image: radial-gradient(circle at 15% 0%, rgba(32, 211, 255, 0.1), transparent 34%);
 }
 
 ::selection {
-  @apply bg-accent text-black;
+  @apply bg-accent text-[#031220];
 }
 
 @layer utilities {
@@ -25,10 +26,14 @@ body {
   }
 
   .container-wrap {
-    @apply mx-auto w-full max-w-6xl px-6;
+    @apply mx-auto w-full max-w-7xl px-6;
   }
 
   .text-muted {
     @apply text-slate-300;
+  }
+
+  .glass-card {
+    @apply border border-white/10 bg-white/[0.03] shadow-card backdrop-blur-sm;
   }
 }

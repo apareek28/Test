@@ -5,10 +5,10 @@ import { Footer } from '@/components/footer';
 import { StickyCTA } from '@/components/sticky-cta';
 
 export const metadata: Metadata = {
-  title: 'LumenTech | AI-Powered Tech Growth Partner',
+  title: 'Axiom Automation | Enterprise AI & Workflow Architecture',
   description:
-    'LumenTech helps high-growth teams modernize products, automate operations, and accelerate revenue with intelligent technology solutions.',
-  keywords: ['tech company', 'automation', 'product engineering', 'AI solutions', 'lead generation']
+    'Axiom Automation designs secure, scalable enterprise automation systems across AI agents, RPA, and workflow orchestration.',
+  keywords: ['enterprise automation', 'AI agents', 'RPA', 'workflow optimization', 'operations transformation']
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
