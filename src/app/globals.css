@@ -12,11 +12,28 @@ html {
 
 body {
   @apply bg-bg text-slate-100 antialiased;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--font-inter), Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 ::selection {
   @apply bg-accent text-black;
+}
+
+.hero-ambient {
+  background: radial-gradient(circle at 10% 20%, rgba(245, 197, 66, 0.2) 0%, rgba(245, 197, 66, 0) 38%),
+    radial-gradient(circle at 80% 0%, rgba(245, 197, 66, 0.18) 0%, rgba(245, 197, 66, 0) 32%),
+    linear-gradient(160deg, rgba(9, 11, 23, 0.96) 0%, rgba(14, 20, 34, 0.98) 100%);
+  background-size: 140% 140%;
+  animation: ambient-flow 12s ease-in-out infinite alternate;
+}
+
+@keyframes ambient-flow {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 100% 100%;
+  }
 }
 
 @layer utilities {

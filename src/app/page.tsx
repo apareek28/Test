@@ -1,65 +1,83 @@
 import Link from 'next/link';
 import { AnimatedSection } from '@/components/animated-section';
 
-const features = [
-  'Revenue-focused product strategy and execution',
-  'AI-powered automation to reduce operational drag',
-  'Scalable cloud architecture for growth stages',
-  'Conversion-first design system and UX optimization'
+const featureCards = [
+  {
+    title: 'Full-Stack Product Delivery',
+    body: 'From UX strategy to production deployment, we deliver modern digital products at startup speed with enterprise reliability.'
+  },
+  {
+    title: 'AI Workflow Automation',
+    body: 'Eliminate repetitive work and reduce cycle time with AI-assisted workflows integrated into your existing stack.'
+  },
+  {
+    title: 'Conversion Optimization',
+    body: 'Improve trial-to-demo and lead-to-close rates with CRO-led audits, rapid experiments, and measurable UX improvements.'
+  }
 ];
 
 const steps = [
   {
-    title: 'Audit & Opportunity Mapping',
-    body: 'We identify growth blockers and prioritize high-impact wins across product, marketing, and operations.'
+    title: 'Discover',
+    body: 'We map growth blockers across journey, product, and operations, then prioritize based on revenue impact.'
   },
   {
-    title: 'Rapid Build Sprints',
-    body: 'Cross-functional squads design, prototype, and launch production-ready initiatives quickly.'
+    title: 'Build',
+    body: 'Our team launches high-leverage product and automation initiatives in rapid sprints with weekly delivery.'
   },
   {
-    title: 'Optimization & Scale',
-    body: 'We continuously test, measure, and improve key metrics like activation, retention, and demo conversion.'
+    title: 'Scale',
+    body: 'We optimize performance continuously with analytics, testing, and strategic roadmap updates.'
   }
 ];
 
 const faqs = [
   {
     q: 'How quickly can we launch?',
-    a: 'Most clients launch their first high-impact initiative in 14 to 21 days.'
+    a: 'Most clients launch their first high-impact initiative in 2 to 3 weeks.'
   },
   {
-    q: 'Do you work with in-house teams?',
-    a: 'Yes. We embed with your internal team and transfer knowledge as we build.'
+    q: 'Will this work with our in-house team?',
+    a: 'Yes. We collaborate closely with internal stakeholders and support knowledge transfer from day one.'
   },
   {
-    q: 'Can you integrate with our existing tools?',
-    a: 'Absolutely. We specialize in clean integrations across CRMs, analytics, and product stacks.'
+    q: 'Can you integrate with our CRM and analytics stack?',
+    a: 'Absolutely. We support modern CRMs, data platforms, and custom integrations.'
   }
 ];
+
+const particles = [...Array(8)].map((_, idx) => ({
+  id: idx,
+  size: 6 + (idx % 4) * 3,
+  left: `${8 + idx * 12}%`,
+  top: `${20 + (idx % 3) * 22}%`
+}));
 
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(245,197,66,0.2),transparent_35%),radial-gradient(circle_at_80%_0%,rgba(245,197,66,0.12),transparent_28%)]" />
+      <section className="hero-ambient relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-grid bg-[size:38px_38px] opacity-10" />
+        {particles.map((particle) => (
+          <div
+            key={particle.id}
+            style={{ width: particle.size, height: particle.size, left: particle.left, top: particle.top }}
+            className="absolute animate-pulse rounded-full bg-accent/40 blur-[1px]"
+          />
+        ))}
         <div className="container-wrap relative section-padding">
           <AnimatedSection className="max-w-3xl space-y-7">
             <p className="inline-flex rounded-full border border-accent/40 bg-accent/10 px-4 py-1 text-sm text-accent">
               Trusted by high-growth B2B teams
             </p>
             <h1 className="text-4xl font-semibold leading-tight text-white md:text-6xl">
-              Build Faster. Convert Better. Scale Smarter.
+              We build high-performing tech experiences that generate more qualified demos.
             </h1>
             <p className="text-lg text-muted">
-              LumenTech helps ambitious companies turn product friction into predictable pipeline with modern engineering and CRO-driven UX.
+              LumenTech combines engineering, premium UX, and CRO strategy to turn product traffic into predictable pipeline.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="rounded-full bg-accent px-6 py-3 font-semibold text-black transition-all hover:shadow-glow"
-              >
+              <Link href="/contact" className="rounded-full bg-accent px-6 py-3 font-semibold text-black transition-all hover:shadow-glow">
                 Book a Demo
               </Link>
               <Link
@@ -68,6 +86,11 @@ export default function HomePage() {
               >
                 Explore Services
               </Link>
+            </div>
+            <div className="grid max-w-2xl grid-cols-1 gap-3 pt-4 text-sm text-slate-200 sm:grid-cols-3">
+              <p>⚡ Fast sprint execution</p>
+              <p>📈 CRO-first UX systems</p>
+              <p>🔒 Enterprise-ready architecture</p>
             </div>
           </AnimatedSection>
         </div>
@@ -81,9 +104,7 @@ export default function HomePage() {
           </p>
         </div>
         <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p className="text-lg text-white">
-            73% of SaaS companies lose qualified leads due to weak onboarding flows and disconnected systems.
-          </p>
+          <p className="text-lg text-white">73% of SaaS teams lose qualified opportunities due to poor UX handoffs and disconnected systems.</p>
         </div>
       </AnimatedSection>
 
@@ -92,32 +113,29 @@ export default function HomePage() {
           <div>
             <h2 className="text-3xl font-semibold">Our Solution</h2>
             <p className="mt-4 text-muted">
-              We unify strategy, product engineering, and CRO into one execution system that increases conversion and speeds delivery.
+              We unify growth strategy, product engineering, and conversion optimization into one execution engine focused on booked demos.
             </p>
           </div>
-          <div className="grid gap-4">
-            {features.map((feature) => (
-              <div key={feature} className="rounded-xl border border-white/10 bg-white/5 p-4 text-sm text-slate-100">
-                <span className="mr-2 text-accent">◆</span>
-                {feature}
-              </div>
-            ))}
+          <div className="rounded-2xl border border-accent/20 bg-white/5 p-6">
+            <p className="text-sm text-slate-200">
+              One integrated partner for roadmap, design, development, experimentation, and performance reporting.
+            </p>
           </div>
         </div>
       </AnimatedSection>
 
       <section className="section-padding container-wrap">
-        <h2 className="text-center text-3xl font-semibold">How It Works</h2>
+        <h2 className="text-center text-3xl font-semibold">Features</h2>
         <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {steps.map((step, idx) => (
+          {featureCards.map((card, idx) => (
             <AnimatedSection
-              key={step.title}
+              key={card.title}
               delay={idx * 0.08}
-              className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-transform hover:-translate-y-1"
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:-translate-y-1 hover:border-accent/40"
             >
-              <p className="mb-3 text-sm text-accent">Step 0{idx + 1}</p>
-              <h3 className="text-xl font-semibold">{step.title}</h3>
-              <p className="mt-3 text-sm text-muted">{step.body}</p>
+              <p className="mb-3 text-sm text-accent">0{idx + 1}</p>
+              <h3 className="text-xl font-semibold">{card.title}</h3>
+              <p className="mt-3 text-sm text-muted">{card.body}</p>
             </AnimatedSection>
           ))}
         </div>
@@ -125,30 +143,49 @@ export default function HomePage() {
 
       <section className="section-padding border-y border-white/10 bg-black/10">
         <div className="container-wrap">
-          <h2 className="text-center text-3xl font-semibold">Client Outcomes</h2>
+          <h2 className="text-center text-3xl font-semibold">How It Works</h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {[
-              '"Demo conversions increased 41% in two months." — RevOps Lead, AtlasCloud',
-              '"We replaced manual workflows and saved 18+ hours weekly." — COO, NovaHealth',
-              '"Launch velocity doubled without increasing team size." — VP Product, StackForge'
-            ].map((quote) => (
-              <div key={quote} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-slate-200">
-                {quote}
-              </div>
+            {steps.map((step, idx) => (
+              <AnimatedSection
+                key={step.title}
+                delay={idx * 0.08}
+                className="rounded-2xl border border-white/10 bg-white/5 p-6 transition-transform hover:-translate-y-1"
+              >
+                <p className="mb-3 text-sm text-accent">Step 0{idx + 1}</p>
+                <h3 className="text-xl font-semibold">{step.title}</h3>
+                <p className="mt-3 text-sm text-muted">{step.body}</p>
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
       <section className="section-padding container-wrap">
-        <h2 className="text-3xl font-semibold">FAQ</h2>
-        <div className="mt-8 space-y-4">
-          {faqs.map((item) => (
-            <div key={item.q} className="rounded-xl border border-white/10 bg-white/5 p-5">
-              <p className="font-medium text-white">{item.q}</p>
-              <p className="mt-2 text-sm text-muted">{item.a}</p>
+        <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          {[
+            '“Demo conversions increased 41% in eight weeks.” — RevOps Lead, AtlasCloud',
+            '“We saved 18+ operational hours weekly after automation rollout.” — COO, NovaHealth',
+            '“Launch velocity doubled without increasing team size.” — VP Product, StackForge'
+          ].map((quote) => (
+            <div key={quote} className="rounded-2xl border border-white/10 bg-white/5 p-6 text-sm text-slate-200">
+              {quote}
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="section-padding border-y border-white/10 bg-black/10">
+        <div className="container-wrap">
+          <h2 className="text-3xl font-semibold">FAQ</h2>
+          <div className="mt-8 space-y-4">
+            {faqs.map((item) => (
+              <div key={item.q} className="rounded-xl border border-white/10 bg-white/5 p-5">
+                <p className="font-medium text-white">{item.q}</p>
+                <p className="mt-2 text-sm text-muted">{item.a}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -158,10 +195,7 @@ export default function HomePage() {
           <p className="mx-auto mt-3 max-w-2xl text-muted">
             Get a tailored roadmap to increase qualified demos, improve user experience, and modernize your tech stack.
           </p>
-          <Link
-            href="/contact"
-            className="mt-6 inline-block rounded-full bg-accent px-6 py-3 font-semibold text-black transition-all hover:shadow-glow"
-          >
+          <Link href="/contact" className="mt-6 inline-block rounded-full bg-accent px-6 py-3 font-semibold text-black transition-all hover:shadow-glow">
             Schedule Your Demo
           </Link>
         </div>
