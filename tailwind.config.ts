@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#333333',
+        bg: '#0B1020',
         accent: '#F5C542'
       },
       boxShadow: {

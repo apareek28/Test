@@ -52,6 +52,8 @@ export function ContactForm() {
         </label>
         <input
           id="name"
+          required
+          autoComplete="name"
           value={form.name}
           onChange={(e) => setForm((current) => ({ ...current, name: e.target.value }))}
           className="w-full rounded-lg border border-white/20 bg-black/20 px-4 py-3 text-white outline-none transition focus:border-accent"
@@ -66,6 +68,8 @@ export function ContactForm() {
         <input
           id="email"
           type="email"
+          required
+          autoComplete="email"
           value={form.email}
           onChange={(e) => setForm((current) => ({ ...current, email: e.target.value }))}
           className="w-full rounded-lg border border-white/20 bg-black/20 px-4 py-3 text-white outline-none transition focus:border-accent"
@@ -79,6 +83,7 @@ export function ContactForm() {
         </label>
         <textarea
           id="message"
+          required
           value={form.message}
           onChange={(e) => setForm((current) => ({ ...current, message: e.target.value }))}
           className="min-h-36 w-full rounded-lg border border-white/20 bg-black/20 px-4 py-3 text-white outline-none transition focus:border-accent"
@@ -89,10 +94,7 @@ export function ContactForm() {
       {error && <p className="text-sm text-red-400">{error}</p>}
       {success && <p className="text-sm text-accent">{success}</p>}
 
-      <button
-        type="submit"
-        className="w-full rounded-full bg-accent px-6 py-3 font-semibold text-black transition hover:shadow-glow"
-      >
+      <button type="submit" className="w-full rounded-full bg-accent px-6 py-3 font-semibold text-black transition hover:shadow-glow">
         Send Message
       </button>
       <p className="text-xs text-slate-400">This form is ready to connect with your email API endpoint.</p>
