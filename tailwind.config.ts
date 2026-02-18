@@ -5,14 +5,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#333333',
-        accent: '#F5C542'
+        primary: '#0C2D6B',
+        secondary: '#1A4FAE',
+        sky: '#6CAEFF',
+        section: '#F4F7FC'
       },
       boxShadow: {
-        glow: '0 0 0 1px rgba(245, 197, 66, 0.3), 0 0 24px rgba(245, 197, 66, 0.35)'
+        soft: '0 10px 30px rgba(15, 35, 80, 0.08)',
+        header: '0 10px 24px rgba(12, 45, 107, 0.14)'
       },
       backgroundImage: {
-        grid: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)'
+        'blue-gradient': 'linear-gradient(135deg, #0C2D6B 0%, #1A4FAE 55%, #6CAEFF 100%)'
       }
     }
   },
