@@ -2,13 +2,23 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
-import { StickyCTA } from '@/components/sticky-cta';
 
 export const metadata: Metadata = {
-  title: 'LumenTech | AI-Powered Tech Growth Partner',
+  title: 'BluePeak Consulting | Enterprise Salesforce & Cloud Transformation',
   description:
-    'LumenTech helps high-growth teams modernize products, automate operations, and accelerate revenue with intelligent technology solutions.',
-  keywords: ['tech company', 'automation', 'product engineering', 'AI solutions', 'lead generation']
+    'BluePeak Consulting delivers enterprise Salesforce consulting, cloud transformation, and managed services with measurable business outcomes.',
+  keywords: [
+    'Salesforce consulting',
+    'cloud consulting',
+    'enterprise digital transformation',
+    'managed services',
+    'CRM implementation'
+  ],
+  openGraph: {
+    title: 'BluePeak Consulting',
+    description: 'Enterprise consulting for Salesforce, cloud modernization, and AI automation.',
+    type: 'website'
+  }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -18,7 +28,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Navbar />
         <main>{children}</main>
         <Footer />
-        <StickyCTA />
       </body>
     </html>
   );

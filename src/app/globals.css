@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
@@ -11,24 +11,28 @@ html {
 }
 
 body {
-  @apply bg-bg text-slate-100 antialiased;
+  @apply bg-white text-slate-900 antialiased;
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 ::selection {
-  @apply bg-accent text-black;
+  @apply bg-primary text-white;
 }
 
 @layer utilities {
   .section-padding {
-    @apply py-20 md:py-28;
+    @apply py-16 md:py-24;
   }
 
   .container-wrap {
-    @apply mx-auto w-full max-w-6xl px-6;
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-7;
   }
 
   .text-muted {
-    @apply text-slate-300;
+    @apply text-slate-600;
+  }
+
+  .enterprise-card {
+    @apply rounded-xl border border-slate-200 bg-white shadow-soft;
   }
 }
