@@ -5,10 +5,10 @@ import { Footer } from '@/components/footer';
 import { StickyCTA } from '@/components/sticky-cta';
 
 export const metadata: Metadata = {
-  title: 'LumenTech | AI-Powered Tech Growth Partner',
+  title: 'AetherOps | AI Automation & Salesforce Transformation',
   description:
-    'LumenTech helps high-growth teams modernize products, automate operations, and accelerate revenue with intelligent technology solutions.',
-  keywords: ['tech company', 'automation', 'product engineering', 'AI solutions', 'lead generation']
+    'AetherOps is a premium consulting firm delivering AI automation, Salesforce implementation, and enterprise digital transformation for global organizations.',
+  keywords: ['AI automation solutions', 'Salesforce consulting', 'enterprise digital transformation', 'Fortune 500 consulting']
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
